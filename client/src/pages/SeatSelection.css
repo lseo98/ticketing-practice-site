@@ -1,0 +1,228 @@
+/* SeatSelection.css */
+
+.seat-selection-container {
+  padding: 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #fdfdfd;
+  position: relative;
+  min-height: 100vh;
+}
+
+.seat-selection-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #d32f2f;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.step-indicator {
+  background-color: #d32f2f;
+  color: white;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-size: 18px;
+  margin-right: 20px;
+}
+
+.concert-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.date-time-select {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.date-time-select select {
+  margin-left: 5px;
+}
+
+.seat-map-wrapper {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 40px;
+}
+
+.seat-map-left {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.seat-map-header {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.stage-label {
+  text-align: center;
+  background-color: #cccccc;
+  width: 60%;
+  padding: 6px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+.seat-grids {
+  display: flex;                  /* 가로 배치 */
+  flex-direction: row;            /* 좌우로 */
+  justify-content: center;        /* 가운데 정렬 */
+  align-items: flex-start;        /* 위쪽 정렬 */
+  gap: 40px;                      /* A구역과 B구역 간격 */
+}
+
+.zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.zone-label {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.seat-grid {
+  display: grid;
+  grid-template-columns: repeat(15, 14px);
+  column-gap: 3px;  /* 가로 간격 */
+  row-gap: 10px;     /* 세로(행) 간격 더 넓게 설정 */
+}
+
+.seat {
+  width: 12px;
+  height: 12px;
+  background-color: #7b57fd;    /* 보라색: 선택 가능 좌석 */
+  border: 0.5px solid #c8c8c8;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.seat.reserved {
+  background-color: #ffffff;
+  border: 0.5px solid #c8c8c8;
+  
+}
+
+.seat.selected {
+  background-color: #7b57fd;
+  border: 1.5px solid black;
+}
+
+.seat-map-right {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.legend ul {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+}
+
+.legend li {
+  margin-bottom: 5px;
+}
+
+.selected-seat-info {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.selected-seat-info table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+.selected-seat-info th,
+.selected-seat-info td {
+  border: 1px solid #ccc;
+  padding: 5px;
+  text-align: center;
+}
+.seat-action-buttons {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-complete {
+  background-color: #d32f2f;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 12px;
+  width: 50%;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sub-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.sub-buttons button {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-back {
+  background-color: #e0e0e0;
+}
+
+.btn-reset {
+  background-color: #f5f5f5;
+}
+
+.btn-complete {
+  background-color: #d32f2f;
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.seat-zone {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.seat-zone-label {
+  text-align: center;
+  background-color: #cccccc;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  font-weight: bold;
+}

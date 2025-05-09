@@ -147,3 +147,37 @@
 .captcha-input:focus {
   outline: none;
 }
+
+.captcha-floating-alert {
+  position: absolute;
+  top: 55%;  /* 화면 중앙보다 살짝 위 */
+  left: 55%; /* 왼쪽 여백에 띄움 */
+  background-color: #fff5f5;
+  color: #d32f2f;
+  border: 1px solid #f5c6cb;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  z-index: 2000; /* modal보다 위에 */
+}
+
+.captcha-input:disabled,
+.btn-common:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.modal-blocker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3); /* 흰색 반투명 */
+  z-index: 1001; /* 모달 내용 위에 오도록 */
+  cursor: not-allowed;
+}

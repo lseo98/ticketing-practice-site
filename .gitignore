@@ -1,11 +1,12 @@
-# .gitignore
-
 # macOS
 .DS_Store
 
 # Windows
 Thumbs.db
 ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
 
 # node
 node_modules/
@@ -17,3 +18,27 @@ npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Logs
+logs/
+*.log
+lerna-debug.log*
+
+# 빌드 캐시 (추가)
+.cache/
+build/
+dist-ssr/
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.tmp
+*.bak
+*.old

@@ -1,0 +1,57 @@
+.home-container {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.home-header {
+  margin-bottom: 60px;
+}
+
+.home-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.half {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.vertical-divider {
+  width: 2px;
+  height: 80%;
+  background-color: #ccc;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.start-button {
+  padding: 12px 20px;
+  font-size: 15px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+/* 파란색 버튼 */
+.start-button.blue {
+  background-color: #007bff;
+}
+
+/* 빨간색 버튼 */
+.start-button.red {
+  background-color: #d32f2f;
+}

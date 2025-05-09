@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Events from "./pages/Events";
 import EventDetail from "./pages/EventDetail"; 
 import CaptchaModal from "./pages/CaptchaModal";
+import SeatSelection from "./pages/SeatSelection";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/eventdetail" element={<EventDetail />} /> {/* ✅ 연결 */}
         <Route path="/captcha" element={<CaptchaModal />} />
+        <Route path="/seatselection" element={<SeatSelection />} />
       </Routes>
     </BrowserRouter>
   );

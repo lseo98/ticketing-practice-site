@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ 페이지 이동을 위한 훅
+import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import ko from "date-fns/locale/ko";
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,7 +7,8 @@ import "./EventDetail.css";
 
 function EventDetail() {
   const [selectedDate, setSelectedDate] = useState(null);
-  const navigate = useNavigate(); // ✅ 페이지 이동용 함수
+  const [isAlertVisible, setIsAlertVisible] = useState(true); // 🔴 경고 상태
+  const navigate = useNavigate();
 
   const allowedDates = [
     new Date("2025-05-10"),
@@ -15,6 +16,7 @@ function EventDetail() {
   ];
 
   const isAllowedDate = (date) => {
+    if (isAlertVisible) return false; // 경고 떠 있으면 선택 막기
     return allowedDates.some(
       (allowed) =>
         date.getFullYear() === allowed.getFullYear() &&
@@ -33,25 +35,34 @@ function EventDetail() {
 
       <div className="container">
         <div className="left">
-          <h2 className="concert-title">2025 권진아 단독 콘서트 [The Dreamest]</h2>
+          <h2 className="concert-title">OO 콘서트</h2>
           <div className="poster-info-wrapper">
             <div className="poster-placeholder">포스터 사진</div>
             <div className="info">
-              <p><strong>장소:</strong> 잠실실내체육관</p>
-              <p><strong>공연기간:</strong> 2025.05.10 ~ 2025.05.11</p>
-              <p><strong>공연시간:</strong> 120분</p>
-              <p><strong>관람연령:</strong> 만 7세 이상</p>
+              <p><strong>장소:</strong> OO 체육관</p>
+              <p><strong>공연기간:</strong> 20XX.XX.10 ~ 20XX.XX.11</p>
+              <p><strong>공연시간:</strong> OO분</p>
+              <p><strong>관람연령:</strong> 만 OO세 이상</p>
               <p><strong>가격:</strong></p>
               <ul>
-                <li>R석 154,000원</li>
-                <li>S석 143,000원</li>
-                <li>A석 132,000원</li>
+                <li>전석 100,000원</li>
               </ul>
             </div>
           </div>
         </div>
 
-        <div className="right">
+        {/* 🔴 경고 메시지 - 팝업처럼 */}
+        {isAlertVisible && (
+          <div className="alert-overlay">
+            <div className="calendar-alert">
+              <span>❗ 날짜를 선택하세요</span>
+              <button className="close-alert" onClick={() => setIsAlertVisible(false)}>×</button>
+            </div>
+          </div>
+        )}
+
+        {/* 오른쪽 패널 - 비활성화 상태 반영 */}
+        <div className={`right ${isAlertVisible ? "disabled" : ""}`}>
           <div className="calendar">
             <h3>관람일</h3>
             <DatePicker
@@ -66,7 +77,7 @@ function EventDetail() {
                 <div className="custom-datepicker-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
                   <button onClick={decreaseMonth}>◀</button>
                   <span style={{ fontWeight: "bold" }}>
-                    {date.getFullYear()}. {String(date.getMonth() + 1).padStart(2, "0")}
+                    20XX. XX
                   </span>
                   <button onClick={increaseMonth}>▶</button>
                 </div>
@@ -86,7 +97,7 @@ function EventDetail() {
 
           <button
             className="reserve-btn"
-            onClick={() => navigate("/captcha")} // ✅ 캡차 페이지로 이동
+            onClick={() => navigate("/captcha")}
           >
             예매하기
           </button>

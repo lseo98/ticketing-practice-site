@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./CaptchaModal.css";
 
 const generateRandomCaptcha = () => {
@@ -13,6 +14,8 @@ const generateRandomCaptcha = () => {
 const CaptchaModal = () => {
   const [captchaText, setCaptchaText] = useState("");
   const [inputValue, setInputValue] = useState("");
+  const [isAlertVisible, setIsAlertVisible] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setCaptchaText(generateRandomCaptcha());
@@ -20,19 +23,33 @@ const CaptchaModal = () => {
 
   const handleReload = () => {
     setCaptchaText(generateRandomCaptcha());
-    setInputValue(""); // 초기화
+    setInputValue("");
   };
 
   const handleInputChange = (e) => {
-    const upperValue = e.target.value.toUpperCase(); // 소문자를 대문자로
+    const upperValue = e.target.value.toUpperCase();
     setInputValue(upperValue);
   };
 
   const isMatched = inputValue === captchaText;
 
+  const handleSubmit = () => {
+    if (isMatched && !isAlertVisible) {
+      navigate("/seatselection");
+    }
+  };
+
   return (
     <div className="captcha-modal-overlay">
+      {isAlertVisible && (
+        <div className="captcha-floating-alert">
+          <span>❗ 6글자를 따라 치시오</span>
+          <button className="close-alert" onClick={() => setIsAlertVisible(false)}>×</button>
+        </div>
+      )}
+
       <div className="captcha-modal">
+        {isAlertVisible && <div className="modal-blocker" />}
         {/* 안심예매 뱃지 */}
         <div className="safe-booking-badge">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 16 16">
@@ -49,18 +66,17 @@ const CaptchaModal = () => {
         </p>
 
         <div className="captcha-frame">
-            <div className="captcha-code-box">
-                <div className="captcha-code-display">{captchaText}</div>
-                <button
-                className="captcha-reload-btn"
-                onClick={handleReload}
-                aria-label="다시 생성"
-                >
-                ↻
-                </button>
-            </div>
+          <div className="captcha-code-box">
+            <div className="captcha-code-display">{captchaText}</div>
+            <button
+              className="captcha-reload-btn"
+              onClick={handleReload}
+              aria-label="다시 생성"
+            >
+              ↻
+            </button>
+          </div>
         </div>
-
 
         <input
           type="text"
@@ -68,11 +84,23 @@ const CaptchaModal = () => {
           placeholder="문자를 입력해주세요"
           value={inputValue}
           onChange={handleInputChange}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && isMatched && !isAlertVisible) {
+              navigate("/seatselection");
+            }
+          }}
+          disabled={isAlertVisible}
         />
 
         <div className="captcha-buttons">
-          <button className="btn-common btn-grey">날짜 다시 선택</button>
-          <button className="btn-common btn-black" disabled={!isMatched}>
+          <button className="btn-common btn-grey" disabled={isAlertVisible}>
+            날짜 다시 선택
+          </button>
+          <button
+            className="btn-common btn-black"
+            onClick={handleSubmit}
+            disabled={!isMatched || isAlertVisible}
+          >
             입력완료
           </button>
         </div>

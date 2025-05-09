@@ -1,17 +1,42 @@
 // src/pages/Home.jsx
-
 import { useNavigate } from "react-router-dom";
+import "./Home.css";
 
 function Home() {
   const navigate = useNavigate();
 
   return (
-    <div style={{ textAlign: "center", paddingTop: "100px" }}>
-      <h1>티켓 예매 연습 웹사이트</h1>
-      <p>사회적 약자를 위한 실전 예매 연습 사이트입니다.</p>
-      <button onClick={() => navigate("/eventdetail")}>
-        예매 연습 시작하기
-      </button>
+    <div className="home-container">
+      {/* 상단 소개 문구 */}
+      <div className="home-header">
+        <h1>티켓 예매 연습 웹사이트</h1>
+        <p>디지털 소외 계층을 위한 실전 예매 연습 사이트입니다.</p>
+      </div>
+
+      {/* 중앙 양쪽 분할 */}
+      <div className="home-body">
+        <div className="half left">
+          <h2 className="brand interpark">interpark</h2>
+          <button
+            className="start-button blue"
+            onClick={() => navigate("/eventdetail")}
+          >
+            콘서트 예매 연습 시작하기
+          </button>
+        </div>
+
+        <div className="vertical-divider"></div>
+
+        <div className="half right">
+          <h2 className="brand ticketlink">티켓링크</h2>
+          <button
+            className="start-button red"
+            onClick={() => navigate("/baseball")}
+          >
+            야구 예매 연습 시작하기
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

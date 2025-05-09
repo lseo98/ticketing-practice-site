@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# 추가 - 환경 변수
+.env
+.env.*.local
+
+# 추가 - 빌드 캐시
+.cache/
+.eslintcache
+
+# 추가 - 로그
+*.log
