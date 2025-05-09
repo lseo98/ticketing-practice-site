@@ -21,7 +21,7 @@ body {
 .left {
   flex: 2;
   border-right: 1px solid #ddd;
-  padding-right: 40px;
+  padding: 0 80px 0 100px; /* ✅ 왼쪽 여백 증가 */
 }
 
 .concert-title {
@@ -68,7 +68,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .calendar, .time {
@@ -162,5 +162,6 @@ body {
 .right.disabled .reserve-btn,
 .right.disabled .booking-btn {
   cursor: not-allowed;
-  pointer-events: auto; 
+  pointer-events: auto;  /* 클릭 막히는 건 JSX에서 disabled로 처리 */
+  opacity: 0.6;
 }

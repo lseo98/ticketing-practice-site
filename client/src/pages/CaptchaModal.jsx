@@ -43,7 +43,7 @@ const CaptchaModal = () => {
     <div className="captcha-modal-overlay">
       {isAlertVisible && (
         <div className="captcha-floating-alert">
-          <span>❗ 6글자를 따라 치시오</span>
+          <span>❗ 6글자를 따라 치시오.</span>
           <button className="close-alert" onClick={() => setIsAlertVisible(false)}>×</button>
         </div>
       )}

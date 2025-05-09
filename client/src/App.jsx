@@ -4,6 +4,7 @@ import Events from "./pages/Events";
 import EventDetail from "./pages/EventDetail"; 
 import CaptchaModal from "./pages/CaptchaModal";
 import SeatSelection from "./pages/SeatSelection";
+import PriceSelection from "./pages/PriceSelection";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/eventdetail" element={<EventDetail />} /> {/* ✅ 연결 */}
         <Route path="/captcha" element={<CaptchaModal />} />
         <Route path="/seatselection" element={<SeatSelection />} />
+        <Route path="/priceselection" element={<PriceSelection />} />
       </Routes>
     </BrowserRouter>
   );

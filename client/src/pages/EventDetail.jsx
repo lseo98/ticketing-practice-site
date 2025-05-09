@@ -4,11 +4,13 @@ import DatePicker from "react-datepicker";
 import ko from "date-fns/locale/ko";
 import "react-datepicker/dist/react-datepicker.css";
 import "./EventDetail.css";
-
+import { useLocation } from "react-router-dom";
 function EventDetail() {
   const [selectedDate, setSelectedDate] = useState(null);
   const [isAlertVisible, setIsAlertVisible] = useState(true); // 🔴 경고 상태
   const navigate = useNavigate();
+  const location = useLocation(); 
+  const remainingTime = location.state?.remainingTime;
 
   const allowedDates = [
     new Date("2025-05-10"),
@@ -24,6 +26,18 @@ function EventDetail() {
         date.getDate() === allowed.getDate()
     );
   };
+  const offsetFromExact = remainingTime !== undefined
+  ? +(remainingTime - 3600).toFixed(1)
+  : null;
+
+const formatOffset = (offset) => {
+  const abs = Math.abs(offset);
+  const m = String(Math.floor(abs / 60)).padStart(2, "0");
+  const s = String(Math.floor(abs % 60)).padStart(2, "0");
+  const f = String(Math.floor((abs % 1) * 10));
+  const sign = offset < 0 ? "-" : "+";
+  return `${sign}${m}:${s}.${f}`;
+};
 
   return (
     <>
@@ -34,8 +48,26 @@ function EventDetail() {
       </header>
 
       <div className="container">
-        <div className="left">
-          <h2 className="concert-title">OO 콘서트</h2>
+  <div className="left">
+    {remainingTime !== undefined && (() => {
+      const offsetFromExact = +(remainingTime - 3600).toFixed(1);
+      const abs = Math.abs(offsetFromExact);
+      const m = String(Math.floor(abs / 60)).padStart(2, "0");
+      const s = String(Math.floor(abs % 60)).padStart(2, "0");
+      const f = String(Math.floor((abs % 1) * 10));
+      const sign = offsetFromExact < 0 ? "-" : "+";
+      const formattedOffset = `${sign}${m}:${s}.${f}`;
+
+      return (
+        <div style={{ textAlign: "left", marginTop: "10px" }}>
+          <p style={{ fontSize: "25px", fontWeight: "bold", color: "#28a745" }}>
+            🎯 정각 기준 차이: {formattedOffset}
+          </p>
+        </div>
+      );
+    })()}
+
+    <h2 className="concert-title">OO 콘서트</h2>
           <div className="poster-info-wrapper">
             <div className="poster-placeholder">포스터 사진</div>
             <div className="info">
@@ -55,7 +87,7 @@ function EventDetail() {
         {isAlertVisible && (
           <div className="alert-overlay">
             <div className="calendar-alert">
-              <span>❗ 날짜를 선택하세요</span>
+              <span>❗ 날짜를 선택하세요.</span>
               <button className="close-alert" onClick={() => setIsAlertVisible(false)}>×</button>
             </div>
           </div>
@@ -102,8 +134,12 @@ function EventDetail() {
             예매하기
           </button>
 
-          <button className="booking-btn">BOOKING / 外國語</button>
-        </div>
+          <button
+            className="booking-btn"
+            disabled={isAlertVisible}
+          >
+            BOOKING / 外國語
+          </button>        </div>
       </div>
     </>
   );

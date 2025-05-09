@@ -1,9 +1,10 @@
-// src/pages/Home.jsx
 import { useNavigate } from "react-router-dom";
-import "./Home.css";
+import { useState } from "react";
+import CountdownDisplay from "./CountdownDisplay";import "./Home.css";
 
 function Home() {
   const navigate = useNavigate();
+  const [remainingTime, setRemainingTime] = useState(3590); // 초기값
 
   return (
     <div className="home-container">
@@ -19,7 +20,7 @@ function Home() {
           <h2 className="brand interpark">interpark</h2>
           <button
             className="start-button blue"
-            onClick={() => navigate("/eventdetail")}
+            onClick={() => navigate("/eventdetail", { state: { remainingTime } })}
           >
             콘서트 예매 연습 시작하기
           </button>
@@ -31,12 +32,15 @@ function Home() {
           <h2 className="brand ticketlink">티켓링크</h2>
           <button
             className="start-button red"
-            onClick={() => navigate("/baseball")}
+            onClick={() => navigate("/baseball", { state: { remainingTime } })}
           >
             야구 예매 연습 시작하기
           </button>
         </div>
       </div>
+
+      {/* 카운트다운 표시 */}
+      <CountdownDisplay onTimeChange={setRemainingTime} />
     </div>
   );
 }

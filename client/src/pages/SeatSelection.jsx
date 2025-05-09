@@ -82,7 +82,9 @@ const SeatSelection = () => {
       <div className="seat-map-wrapper">
         <div className="seat-map-left">
           <div className="seat-map-header">
-            <p>원하시는 영역을 선택해주세요. 공연장에서 위치를 클릭하거나, 오른쪽의 좌석을 선택해주세요.</p>
+            <p class="warning-text">❗ 예매할 좌석을 선택해주세요.</p>
+            <p class="warning-text">❗ 보라색으로 되어 있는 영역 중에서 선택할 수 있습니다.</p>
+
           </div>
           <div className="seat-map-image">
             <div className="seat-zone-label">STAGE</div>
