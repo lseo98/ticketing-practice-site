@@ -1,0 +1,149 @@
+/* 전체 오버레이 */
+.captcha-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* 모달 본체 */
+.captcha-modal {
+  background: white;
+  padding: 2rem;
+  width: 400px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* "안심예매" 뱃지 */
+.safe-booking-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background-color: #92a4ff; /* 연보라색 */
+  color: white;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 0.3rem;
+}
+
+/* 체크 아이콘 */
+.check-icon {
+  font-size: 16px;
+}
+
+/* 제목: 문자를 입력해주세요 */
+.captcha-title {
+  color: #92a4ff;
+  font-size: 20px; 
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+/* ✅ 큰 회색 테두리 박스 */
+.captcha-frame {
+  position: relative;
+  width: 100%;               /* 부모 너비에 맞춤 */
+  max-width: 360px;          /* 너무 커지지 않게 제한 */
+  height: 120px;             /* ✅ 박스 높이 키움 */
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* ✅ 남색 배경 + 노란 텍스트 */
+.captcha-code-display {
+  background-color: #1E3A8A;
+  color: #FFD700;
+  font-family: monospace;
+  font-size: 32px;
+  padding: 16px 40px;
+  letter-spacing: 12px;
+  margin-right: 40px;
+  margin-top: 30px;
+}
+
+/* ✅ ↻ 새로고침 버튼 (오른쪽 상단 고정, 남색과 겹치지 않게) */
+.captcha-reload-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #888;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.captcha-reload-btn:hover {
+  background: #888;
+  color: white;
+}
+
+/* 입력창 */
+.captcha-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+}
+
+/* 버튼 구역 */
+.captcha-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 공통 버튼 스타일 */
+.btn-common {
+  width: 160px;
+  height: 48px;
+  font-size: 16px;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+/* 회색 버튼 */
+.btn-grey {
+  background: #6d6d6d;
+  color: white;
+}
+.btn-grey:hover {
+  background: #6d6d6d;
+  color: white;
+}
+
+/* 검정 버튼 */
+.btn-black {
+  background: #434343;
+  color: white;
+}
+.btn-black:hover {
+  background: #434343;
+  color: white;
+}
+
+.captcha-reload-btn:focus,
+.btn-black:focus,
+.btn-grey:focus,
+.captcha-input:focus {
+  outline: none;
+}

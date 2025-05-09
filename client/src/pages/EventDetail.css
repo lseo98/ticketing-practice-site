@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: #f9f9f9;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 80px;
+  gap: 40px;
+  background-color: white;
+}
+
+/* 왼쪽 영역 */
+.left {
+  flex: 2;
+  border-right: 1px solid #ddd;
+  padding-right: 40px;
+}
+
+.concert-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.poster-info-wrapper {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.poster-placeholder {
+  width: 200px;
+  height: 300px;
+  background-color: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #555;
+  border-radius: 8px;
+}
+
+.info {
+  flex: 1;
+}
+
+.info p {
+  margin: 6px 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.info ul {
+  padding-left: 20px;
+  margin-top: 4px;
+}
+
+/* 오른쪽 영역 */
+.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.calendar, .time {
+  background: #f1f1f1;
+  padding: 14px;
+  border-radius: 8px;
+}
+
+.reserve-btn {
+  padding: 14px;
+  background-color: #2e5cff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.reserve-btn:hover {
+  background-color: #1f4be2;
+}
+
+.booking-btn {
+  padding: 14px;
+  background-color: white;
+  color: #2e5cff;
+  border: 2px solid #2e5cff;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.booking-btn:hover {
+  background-color: #f0f4ff;
+}
+
+.site-header {
+  width: 100%;
+  padding: 16px 40px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 500;
+  color: #222;
+}
+
+.logo-nol {
+  color: #2e5cff;
+  font-weight: bold;
+}
