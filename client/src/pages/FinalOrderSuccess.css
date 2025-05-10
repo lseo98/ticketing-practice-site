@@ -1,0 +1,18 @@
+.success-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f7f7; /* 배경이 너무 흰색이면 이걸 써도 좋습니다 */
+}
+
+.success-box {
+  background-color: #797979; /* 회색 네모 */
+  color: white;
+  padding: 40px 60px;
+  border-radius: 12px;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}

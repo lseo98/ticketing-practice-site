@@ -5,6 +5,9 @@ import EventDetail from "./pages/EventDetail";
 import CaptchaModal from "./pages/CaptchaModal";
 import SeatSelection from "./pages/SeatSelection";
 import PriceSelection from "./pages/PriceSelection";
+import OrderConfirm from "./pages/OrderConfirm";
+import FinalOrderStep from "./pages/FinalOrderStep";
+import FinalOrderSuccess from "./pages/FinalOrderSuccess"
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
         <Route path="/captcha" element={<CaptchaModal />} />
         <Route path="/seatselection" element={<SeatSelection />} />
         <Route path="/priceselection" element={<PriceSelection />} />
+        <Route path="/orderconfirm" element={<OrderConfirm />} />
+        <Route path="/finalorderstep" element={<FinalOrderStep />} />
+        <Route path="/finalordersuccess" element={<FinalOrderSuccess />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,5 +1,6 @@
+// ✅ CaptchaModal.jsx
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./CaptchaModal.css";
 
 const generateRandomCaptcha = () => {
@@ -16,6 +17,10 @@ const CaptchaModal = () => {
   const [inputValue, setInputValue] = useState("");
   const [isAlertVisible, setIsAlertVisible] = useState(true);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const selectedDate = location.state?.selectedDate || "20XX.XX.10";
+  console.log("넘겨받은 selectedDate:", selectedDate);
 
   useEffect(() => {
     setCaptchaText(generateRandomCaptcha());
@@ -35,7 +40,11 @@ const CaptchaModal = () => {
 
   const handleSubmit = () => {
     if (isMatched && !isAlertVisible) {
-      navigate("/seatselection");
+      navigate("/seatselection", {
+        state: {
+          selectedDate,
+        },
+      });
     }
   };
 
@@ -50,7 +59,7 @@ const CaptchaModal = () => {
 
       <div className="captcha-modal">
         {isAlertVisible && <div className="modal-blocker" />}
-        {/* 안심예매 뱃지 */}
+
         <div className="safe-booking-badge">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 16 16">
             <path d="M13.485 1.929a.75.75 0 0 1 1.06 1.06l-8.25 8.25a.75.75 0 0 1-1.06 0L1.454 7.06a.75.75 0 0 1 1.06-1.06l3.19 3.189 7.78-7.78z" />
@@ -72,9 +81,7 @@ const CaptchaModal = () => {
               className="captcha-reload-btn"
               onClick={handleReload}
               aria-label="다시 생성"
-            >
-              ↻
-            </button>
+            >↻</button>
           </div>
         </div>
 
@@ -84,25 +91,17 @@ const CaptchaModal = () => {
           placeholder="문자를 입력해주세요"
           value={inputValue}
           onChange={handleInputChange}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && isMatched && !isAlertVisible) {
-              navigate("/seatselection");
-            }
-          }}
+          onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
           disabled={isAlertVisible}
         />
 
         <div className="captcha-buttons">
-          <button className="btn-common btn-grey" disabled={isAlertVisible}>
-            날짜 다시 선택
-          </button>
+          <button className="btn-common btn-grey" disabled={isAlertVisible}>날짜 다시 선택</button>
           <button
             className="btn-common btn-black"
             onClick={handleSubmit}
             disabled={!isMatched || isAlertVisible}
-          >
-            입력완료
-          </button>
+          >입력완료</button>
         </div>
       </div>
     </div>

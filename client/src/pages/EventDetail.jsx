@@ -1,15 +1,16 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import ko from "date-fns/locale/ko";
 import "react-datepicker/dist/react-datepicker.css";
 import "./EventDetail.css";
-import { useLocation } from "react-router-dom";
+
 function EventDetail() {
   const [selectedDate, setSelectedDate] = useState(null);
-  const [isAlertVisible, setIsAlertVisible] = useState(true); // 🔴 경고 상태
+  const selectedDateRef = useRef(null);
+  const [isAlertVisible, setIsAlertVisible] = useState(true);
   const navigate = useNavigate();
-  const location = useLocation(); 
+  const location = useLocation();
   const remainingTime = location.state?.remainingTime;
 
   const allowedDates = [
@@ -18,7 +19,7 @@ function EventDetail() {
   ];
 
   const isAllowedDate = (date) => {
-    if (isAlertVisible) return false; // 경고 떠 있으면 선택 막기
+    if (isAlertVisible) return false;
     return allowedDates.some(
       (allowed) =>
         date.getFullYear() === allowed.getFullYear() &&
@@ -26,18 +27,27 @@ function EventDetail() {
         date.getDate() === allowed.getDate()
     );
   };
-  const offsetFromExact = remainingTime !== undefined
-  ? +(remainingTime - 3600).toFixed(1)
-  : null;
 
-const formatOffset = (offset) => {
-  const abs = Math.abs(offset);
-  const m = String(Math.floor(abs / 60)).padStart(2, "0");
-  const s = String(Math.floor(abs % 60)).padStart(2, "0");
-  const f = String(Math.floor((abs % 1) * 10));
-  const sign = offset < 0 ? "-" : "+";
-  return `${sign}${m}:${s}.${f}`;
-};
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    const year = "20XX";
+    const month = "XX";
+    const day = String(date.getDate()).padStart(2, "0");
+    selectedDateRef.current = `${year}.${month}.${day}`;
+  };
+
+  const offsetFromExact = remainingTime !== undefined
+    ? +(remainingTime - 3600).toFixed(1)
+    : null;
+
+  const formatOffset = (offset) => {
+    const abs = Math.abs(offset);
+    const m = String(Math.floor(abs / 60)).padStart(2, "0");
+    const s = String(Math.floor(abs % 60)).padStart(2, "0");
+    const f = String(Math.floor((abs % 1) * 10));
+    const sign = offset < 0 ? "-" : "+";
+    return `${sign}${m}:${s}.${f}`;
+  };
 
   return (
     <>
@@ -48,26 +58,19 @@ const formatOffset = (offset) => {
       </header>
 
       <div className="container">
-  <div className="left">
-    {remainingTime !== undefined && (() => {
-      const offsetFromExact = +(remainingTime - 3600).toFixed(1);
-      const abs = Math.abs(offsetFromExact);
-      const m = String(Math.floor(abs / 60)).padStart(2, "0");
-      const s = String(Math.floor(abs % 60)).padStart(2, "0");
-      const f = String(Math.floor((abs % 1) * 10));
-      const sign = offsetFromExact < 0 ? "-" : "+";
-      const formattedOffset = `${sign}${m}:${s}.${f}`;
+        <div className="left">
+          {remainingTime !== undefined && (() => {
+            const offset = +(remainingTime - 3600).toFixed(1);
+            return (
+              <div style={{ textAlign: "left", marginTop: "10px" }}>
+                <p style={{ fontSize: "25px", fontWeight: "bold", color: "#28a745" }}>
+                  🎯 정각 기준 차이: {formatOffset(offset)}
+                </p>
+              </div>
+            );
+          })()}
 
-      return (
-        <div style={{ textAlign: "left", marginTop: "10px" }}>
-          <p style={{ fontSize: "25px", fontWeight: "bold", color: "#28a745" }}>
-            🎯 정각 기준 차이: {formattedOffset}
-          </p>
-        </div>
-      );
-    })()}
-
-    <h2 className="concert-title">OO 콘서트</h2>
+          <h2 className="concert-title">OO 콘서트</h2>
           <div className="poster-info-wrapper">
             <div className="poster-placeholder">포스터 사진</div>
             <div className="info">
@@ -77,13 +80,12 @@ const formatOffset = (offset) => {
               <p><strong>관람연령:</strong> 만 OO세 이상</p>
               <p><strong>가격:</strong></p>
               <ul>
-                <li>전석 100,000원</li>
+                <li>전석 99,000원</li>
               </ul>
             </div>
           </div>
         </div>
 
-        {/* 🔴 경고 메시지 - 팝업처럼 */}
         {isAlertVisible && (
           <div className="alert-overlay">
             <div className="calendar-alert">
@@ -93,13 +95,12 @@ const formatOffset = (offset) => {
           </div>
         )}
 
-        {/* 오른쪽 패널 - 비활성화 상태 반영 */}
         <div className={`right ${isAlertVisible ? "disabled" : ""}`}>
           <div className="calendar">
             <h3>관람일</h3>
             <DatePicker
               selected={selectedDate}
-              onChange={(date) => setSelectedDate(date)}
+              onChange={handleDateChange}
               inline
               filterDate={isAllowedDate}
               dateFormat="yyyy.MM.dd"
@@ -108,9 +109,7 @@ const formatOffset = (offset) => {
               renderCustomHeader={({ date, decreaseMonth, increaseMonth }) => (
                 <div className="custom-datepicker-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
                   <button onClick={decreaseMonth}>◀</button>
-                  <span style={{ fontWeight: "bold" }}>
-                    20XX. XX
-                  </span>
+                  <span style={{ fontWeight: "bold" }}>20XX. XX</span>
                   <button onClick={increaseMonth}>▶</button>
                 </div>
               )}
@@ -129,17 +128,24 @@ const formatOffset = (offset) => {
 
           <button
             className="reserve-btn"
-            onClick={() => navigate("/captcha")}
+            onClick={() => {
+              const fakeDate = selectedDateRef.current;
+              if (!fakeDate) return;
+              navigate("/captcha", {
+                state: {
+                  selectedDate: fakeDate,
+                },
+              });
+            }}
+            disabled={!selectedDate}
           >
             예매하기
           </button>
 
-          <button
-            className="booking-btn"
-            disabled={isAlertVisible}
-          >
+          <button className="booking-btn" disabled={isAlertVisible}>
             BOOKING / 外國語
-          </button>        </div>
+          </button>
+        </div>
       </div>
     </>
   );
