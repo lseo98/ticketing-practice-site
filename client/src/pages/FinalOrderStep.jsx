@@ -20,17 +20,14 @@ const OrderConfirm = () => {
 
       <div className="order-content-layout">
 
-        {/* 좌측: 결제방식선택 */}
         <div className="left-section">
           <h3>결제방식선택</h3>
         </div>
 
-        {/* 중간: 결제수단입력 */}
         <div className="middle-section">
           <h3>결제수단입력</h3>
         </div>
 
-        {/* 우측: 예매 요약 */}
         <div className="right-section">
           <div className="summary-box">
             <h3>My예매정보</h3>

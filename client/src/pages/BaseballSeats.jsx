@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./BaseballSeats.css";
 
 function BaseballSeats() {
   const [selected, setSelected] = useState([]);
-
+  const navigate = useNavigate();
   const toggleSeat = (id) => {
     setSelected((prev) =>
       prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]
@@ -39,7 +40,6 @@ function BaseballSeats() {
         ))}
       </div>
 
-      {/* 우측 선택 정보 */}
       <div className="sidebar">
         <h3>선택된 좌석</h3>
         {selected.length > 0 ? (
@@ -54,7 +54,14 @@ function BaseballSeats() {
         <p style={{ marginTop: "20px", fontWeight: "bold" }}>
           위즈 캠핑존(4층): 16석 남음
         </p>
-        <button style={{ marginTop: "20px", padding: "10px 20px" }}>
+        <button
+          onClick={() =>
+            navigate("/finalordersuccess", {
+              state: { selectedSeats: selected },
+            })
+          }
+          disabled={selected.length === 0}
+        >
           다음단계
         </button>
       </div>

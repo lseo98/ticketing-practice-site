@@ -1,8 +1,7 @@
-// src/components/CountdownDisplay.jsx
 import React, { useEffect, useState } from "react";
 
 const CountdownDisplay = ({ onTimeChange }) => {
-  const [secondsPassed, setSecondsPassed] = useState(3590); // 59:50.0부터
+  const [secondsPassed, setSecondsPassed] = useState(3590); 
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -12,7 +11,7 @@ const CountdownDisplay = ({ onTimeChange }) => {
         onTimeChange && onTimeChange(reset);
         return reset;
       });
-    }, 100); // 0.1초마다 증가
+    }, 100); 
     return () => clearInterval(timer);
   }, [onTimeChange]);
 

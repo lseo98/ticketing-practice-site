@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import CountdownDisplay from "./CountdownDisplay";import "./Home.css";
+import CountdownDisplay from "./CountdownDisplay";
+import "./Home.css";
 
 function Home() {
   const navigate = useNavigate();
@@ -8,15 +9,13 @@ function Home() {
 
   return (
     <div className="home-container">
-      {/* 상단 소개 문구 */}
       <div className="home-header">
         <h1>티켓 예매 연습 웹사이트</h1>
         <p>디지털 소외 계층을 위한 실전 예매 연습 사이트입니다.</p>
       </div>
 
-      {/* 중앙 양쪽 분할 */}
       <div className="home-body">
-        <div className="half left">
+        <div className="half">
           <h2 className="brand interpark">interpark</h2>
           <button
             className="start-button blue"
@@ -26,9 +25,9 @@ function Home() {
           </button>
         </div>
 
-        <div className="vertical-divider"></div>
+        <div className="vertical-divider" />
 
-        <div className="half right">
+        <div className="half">
           <h2 className="brand ticketlink">티켓링크</h2>
           <button
             className="start-button red"
@@ -39,7 +38,6 @@ function Home() {
         </div>
       </div>
 
-      {/* 카운트다운 표시 */}
       <CountdownDisplay onTimeChange={setRemainingTime} />
     </div>
   );

@@ -19,7 +19,6 @@ const OrderConfirm = () => {
       <div className="step-header">04. 배송선택/주문자확인</div>
 
       <div className="order-content-layout">
-        {/* 좌측: 수령방법 */}
         <div className="left-section">
           <h3>티켓수령방법</h3>
           <div className="delivery-options">
@@ -48,7 +47,6 @@ const OrderConfirm = () => {
           </p>
         </div>
 
-        {/* 중간: 예매자 확인 */}
         <div className="middle-section">
           <h3>예매자 확인</h3>
 
@@ -96,7 +94,6 @@ const OrderConfirm = () => {
           </div>
         </div>
 
-        {/* 우측: 예매 요약 */}
         <div className="right-section">
           <div className="summary-box">
             <h3>My예매정보</h3>

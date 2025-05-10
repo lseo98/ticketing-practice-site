@@ -8,13 +8,13 @@
 }
 
 .home-body {
+  position: relative; 
   display: flex;
   justify-content: center;
   align-items: center;
   height: 300px;
   max-width: 800px;
   margin: 0 auto;
-  position: relative;
 }
 
 .half {
@@ -23,9 +23,15 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  height: 100%;
+  justify-content: center; 
 }
 
 .vertical-divider {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
   width: 2px;
   height: 80%;
   background-color: #ccc;
@@ -46,12 +52,10 @@
   border-radius: 6px;
 }
 
-/* 파란색 버튼 */
 .start-button.blue {
   background-color: #007bff;
 }
 
-/* 빨간색 버튼 */
 .start-button.red {
   background-color: #d32f2f;
 }

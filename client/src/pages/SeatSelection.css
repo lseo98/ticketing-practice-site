@@ -1,4 +1,3 @@
-/* SeatSelection.css */
 
 .seat-selection-container {
   padding: 20px;
@@ -74,11 +73,11 @@
 }
 
 .seat-grids {
-  display: flex;                  /* 가로 배치 */
-  flex-direction: row;            /* 좌우로 */
-  justify-content: center;        /* 가운데 정렬 */
-  align-items: flex-start;        /* 위쪽 정렬 */
-  gap: 40px;                      /* A구역과 B구역 간격 */
+  display: flex;                 
+  flex-direction: row;          
+  justify-content: center;       
+  align-items: flex-start;      
+  gap: 40px;                   
 }
 
 .zone {
@@ -95,14 +94,14 @@
 .seat-grid {
   display: grid;
   grid-template-columns: repeat(15, 14px);
-  column-gap: 3px;  /* 가로 간격 */
-  row-gap: 10px;     /* 세로(행) 간격 더 넓게 설정 */
+  column-gap: 3px;  
+  row-gap: 10px;  
 }
 
 .seat {
   width: 12px;
   height: 12px;
-  background-color: #7b57fd;    /* 보라색: 선택 가능 좌석 */
+  background-color: #7b57fd;   
   border: 0.5px solid #c8c8c8;
   border-radius: 2px;
   cursor: pointer;

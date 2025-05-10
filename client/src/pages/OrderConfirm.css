@@ -135,7 +135,7 @@ h3 {
 .input-with-hint {
   display: flex;
   align-items: center;
-  gap: 10px; /* 간격 조절 */
+  gap: 10px; 
 }
 
 .input-with-hint p {

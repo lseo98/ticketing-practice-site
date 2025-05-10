@@ -1,4 +1,3 @@
-// src/pages/BaseballStadium.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import stadiumMap from "../assets/wizpark.png"; // 최신 이미지

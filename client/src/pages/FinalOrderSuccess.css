@@ -3,11 +3,11 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f7f7f7; /* 배경이 너무 흰색이면 이걸 써도 좋습니다 */
+  background-color: #f7f7f7; 
 }
 
 .success-box {
-  background-color: #797979; /* 회색 네모 */
+  background-color: #797979; 
   color: white;
   padding: 40px 60px;
   border-radius: 12px;
@@ -15,4 +15,21 @@
   font-weight: bold;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.home-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 16px;
+  background-color: #2e5cff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.home-button:hover {
+  background-color: #becf97;
 }
