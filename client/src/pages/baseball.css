@@ -1,0 +1,30 @@
+.baseball-container {
+    padding: 60px 80px;
+    font-family: sans-serif;
+  }
+  
+  .page-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  
+  .team-list {
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  .team-item {
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: 0.2s;
+  }
+  
+  .team-item:hover {
+    background-color: #f2f2f2;
+  }

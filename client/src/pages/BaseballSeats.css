@@ -1,0 +1,67 @@
+.camping-zone-container {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.camping-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.seat-row {
+  display: flex;
+  gap: 8px;
+  margin: 4px 0;
+}
+
+.seat-row.center {
+  justify-content: center;
+}
+
+.around-seat {
+  width: 20px;
+  height: 20px;
+  background-color: #6495ed;
+  border: 1px solid #333;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.around-seat.selected {
+  border: 2px solid #e60023;
+  background-color: #ffa07a;
+}
+
+.center-seat {
+  width: 26px;
+  height: 26px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  background-color: white;
+  text-align: center;
+  line-height: 24px;
+  font-size: 12px;
+
+  font-weight: bold;
+}
+
+.camping-label {
+  margin-top: 6px;
+  font-weight: bold;
+  font-size: 14px;
+}
+.camping-page-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  padding: 40px;
+}
+
+.sidebar {
+  width: 200px;
+  border-left: 1px solid #ccc;
+  padding-left: 20px;
+}
